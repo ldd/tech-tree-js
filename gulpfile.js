@@ -7,6 +7,13 @@ var useref = require('gulp-useref'),
     sourcemaps = require('gulp-sourcemaps'),
     lazypipe = require('lazypipe');
 
+var webserver = require('gulp-webserver');
+
+gulp.task('serve', function() {
+    gulp.src('.')
+        .pipe(webserver({}));
+});
+
 gulp.task('useref', function(){
     return gulp.src('index.html')
         .pipe(useref({}, lazypipe().pipe(sourcemaps.init, { loadMaps: true })))
