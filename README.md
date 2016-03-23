@@ -36,6 +36,13 @@ Build:
 
     gulp
 
+Run a webserver
+
+    gulp serve
+
+Then open a browser and go to [localhost:8000](http://localhost:8000) to see the site.
+
+
 Art used
 ===
 Art assets used under the [CC-BY 3.0 License](https://creativecommons.org/licenses/by/3.0/)
