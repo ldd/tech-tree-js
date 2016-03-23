@@ -1,0 +1,27 @@
+{
+  "camelcase": true,
+  "curly": true,
+  "eqeqeq": true,
+  "esnext": true,
+  "forin": true,
+  "freeze": true,
+  "immed": true,
+  "indent": 4,
+  "latedef": true,
+  "maxdepth": 5,
+  "newcap": true,
+  "noarg": true,
+  "noempty": true,
+  "nonew": true,
+  "plusplus": true,
+
+  "undef": true,
+  "unused": true,
+
+  "devel": true,
+
+  "jquery": false,
+  "quotmark": "double",
+  "browser": true,
+  "predef": [   "d3", "saveSvgAsPng"  ]
+}

@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>techTree</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <!-- build:js lib/d3.min.js -->
+    <script type="text/javascript" src="lib/d3.min.js"></script>
+    <!-- endbuild -->
+    <!-- build:js lib/saveSvgAsPng.min.js -->
+    <script type="text/javascript" src="lib/saveSvgAsPng.min.js"></script>
+    <!-- endbuild -->
+    <!-- build:css css/style.css -->
+    <link rel="stylesheet" type="text/css" media="screen" href="css/style.css">
+    <!-- endbuild -->
+</head>
+<body>
+    <button id="save" class="btn btn-primary save-btn">Save as Image</button>
+    <div id="svg"></div>
+<!-- build:js js/techTree.min.js -->
+    <script type="text/javascript" src="js/settings.js"></script>
+    <script type="text/javascript" src="js/plotHelper.js"></script>
+    <script type="text/javascript" src="js/eventHelper.js"></script>
+    <script type="text/javascript" src="js/nodeHelper.js"></script>
+    <script type="text/javascript" src="js/linkHelper.js"></script>
+    <script type="text/javascript" src="js/imageUtils.js"></script>
+    <script type="text/javascript" src="js/jsonLoader.js"></script>
+    <script type="text/javascript" src="js/techTree.js"></script>
+<!-- endbuild -->
+    <div class="settingPicker">
+        <div id="imageSource" class="btn-group btn-group-justified" role="group" aria-label="...">
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-default">
+                    SpriteSheet #1
+                </button>
+            </div>
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-default">
+                    Images #1
+                </button>
+            </div>
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-default btn-primary">
+                    Images #2
+                </button>
+            </div>
+        </div>
+        <br>
+        <div id="nodeOrientation" class="btn-group btn-group-justified" role="group" aria-label="...">
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-default">
+                    Radial
+                </button>
+            </div>
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-default btn-primary">
+                    Vertical
+                </button>
+            </div>
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-default">
+                 Horizontal
+                </button>
+            </div>
+        </div>
+        <br>
+        <div id="initialLinkColor" class="btn-group btn-group-justified" role="group" aria-label="...">
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-default">
+                    Show all links
+                </button>
+            </div>
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-default btn-primary">
+                    Show active links
+                </button>
+            </div>
+        </div>
+        <br>
+        <div id="useShadows" class="btn-group btn-group-justified" role="group" aria-label="...">
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-default btn-primary">
+                    With shadows
+                </button>
+            </div>
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-default">
+                    No shadows
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // based on http://jaketrent.com/post/d3-class-operations/
+        function onClick(container, configs){
+            container.selectAll("div").select("button")
+                .on("click", function (_,i) {
+                    techTree.deleteTree();
+                    techTree.createTree(techTree.nodesData, configs[i], techTree.offsetsData);
+                    var activeClass = "btn-primary";
+                    var alreadyIsActive = d3.select(this).classed(activeClass);
+                    container.selectAll("div").select("button")
+                        .classed(activeClass, false);
+                    d3.select(this).classed(activeClass, !alreadyIsActive);
+                });
+        }
+        onClick(d3.select("#imageSource"), [{
+            settings: {
+                useSpriteSheet : true,
+                imageFolderName: "images",
+                spriteSheetFileName : "spritesheet.png"
+            }
+        },{
+            settings: {useSpriteSheet : false, imageFolderName: "images/low_res"}
+        },{
+            settings: {useSpriteSheet : false, imageFolderName: "images/high_res"}
+        }]);
+        onClick(d3.select("#nodeOrientation"), [{
+            settings: {nodeOrientation: "circular"}
+        },{
+            settings: {nodeOrientation: "vertical"}
+        },{
+            settings: {nodeOrientation: "horizontal"}
+        }]);
+        onClick(d3.select("#initialLinkColor"), [{
+            settings: {initialLinkColor: "#CCC"}
+        },{
+            settings: {initialLinkColor: "none"}
+        }]);
+        onClick(d3.select("#useShadows"), [{
+            settings: {useShadows: true}
+        },{
+            settings: {useShadows: false}
+        }]);
+        techTree.createTreeFromJSON({
+            dataFileName: "/json/data.json",
+            offsetsFileName: "/json/offsets.json",
+            settingsFileName: "/json/settings.json"
+        });
+    </script>
+</body>
+</html>

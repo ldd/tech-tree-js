@@ -1,0 +1,46 @@
+body{
+    background-color: #1e1e1e;
+    margin: 0;
+    overflow: hidden;
+}
+
+.node {
+    cursor: pointer;
+}
+rect {
+    fill: #B2B2B2;
+    stroke: #CCC;
+    stroke-width: 4px;
+}
+.node text {
+    font: 10px sans-serif;
+}
+.link {
+    fill: none;
+    stroke: #CCC;
+    stroke-width: 6px;
+}
+
+.settingPicker{
+    position: absolute;
+    bottom: 5px;
+    left: 5px;
+    width: 50%;
+}
+
+.save-btn{
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    width: 25%;
+}
+
+/*.btn-primary{*/
+    /*background-color: darkgray;*/
+    /*border-color: black;*/
+/*}*/
+
+/*.btn-primary:hover{*/
+    /*background-color: black;*/
+    /*border-color: black;*/
+/*}*/
