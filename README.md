@@ -1,7 +1,11 @@
 tech-tree-js 
 ===
+![tech tree example](https://user-images.githubusercontent.com/1187476/30304466-a83803f6-973b-11e7-85ec-88988919b151.png)
+
 # Demo
 Please check out the demo by visiting [https://ldd.github.io/tech-tree-js](https://ldd.github.io/tech-tree-js)
+
+![activating a tech node](https://user-images.githubusercontent.com/1187476/30272962-f4513da6-96c4-11e7-85c5-9a6eb1495eae.gif)
 
 ## Features
 - use a TexturePacker spritesheet or individual images
@@ -57,4 +61,4 @@ Libraries used under the [MIT License](http://www.opensource.org/licenses/mit-li
 - d3
 - saveSvgAsPng
 
-Copyright (C) 2014 ldd
+Copyright (C) 2017 ldd
