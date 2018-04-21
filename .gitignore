@@ -4,5 +4,7 @@
 dist/*
 !dist/js/
 node_modules/
-images/
-json/
+
+# uncomment to block committing copyright images
+# images/
+# json/
