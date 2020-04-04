@@ -2,6 +2,10 @@ tech-tree-js
 ===
 ![tech tree example](https://user-images.githubusercontent.com/1187476/30304466-a83803f6-973b-11e7-85ec-88988919b151.png)
 
+# Update
+If you use react, consider taking a look at my library [react-tech-tree](https://github.com/ldd/react-tech-tree). It has support for tooltips, styling, etc.
+
+
 # Demo
 Please check out the demo by visiting [https://ldd.github.io/tech-tree-js](https://ldd.github.io/tech-tree-js)
 
